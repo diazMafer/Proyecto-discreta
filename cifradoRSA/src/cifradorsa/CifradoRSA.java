@@ -43,10 +43,8 @@ public class CifradoRSA {
                     //metodo de encriptar.
                     System.out.println("****PROCESO DE ENCRIPTACION****");
                     //se generan numeros relativos.
+                    //La lista tiene pares relativos. Osea posicion: 0 y 1 son primos relativos entre si, 2 y 3 son entre si.
                     primos=instance.generadorRelativos();
-                    for(int i=0; i<primos.size(); i++){
-                        System.out.println(primos.get(i));
-                    }
                     break;
                 case "2":
                     //metodo de desencriptar.
