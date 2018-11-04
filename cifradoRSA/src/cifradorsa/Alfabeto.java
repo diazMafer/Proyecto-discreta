@@ -10,103 +10,104 @@ package cifradorsa;
  * @author Mafer
  */
 public class Alfabeto{
-    public int abc_numerico(String letra){
-        int x = 0;
+    public Alfabeto(){}
+    public String abc_numerico(String letra){
+        String x = "00";
         if(letra.equals("A")){
-            x = 1;
+            x = "01";
         }
         if(letra.equals("B")){
-            x = 2;
+            x = "02";
         }
         if(letra.equals("C")){
-            x = 3;
+            x = "03";
         }
         if(letra.equals("D")){
-            x = 4;
+            x = "04";
         }
         if(letra.equals("E")){
-            x = 5;
+            x = "05";
         }
         if(letra.equals("F")){
-            x = 6;
+            x = "06";
         }
         if(letra.equals("G")){
-            x = 7;
+            x = "07";
         }
         if(letra.equals("H")){
-            x = 8;
+            x = "08";
         }
         if(letra.equals("I")){
-            x = 9;
+            x = "09";
         }
         if(letra.equals("J")){
-            x = 10;
+            x = "10";
         }
         if(letra.equals("K")){
-            x = 11;
+            x = "11";
         }
         if(letra.equals("L")){
-            x = 12;
+            x = "12";
         }
         if(letra.equals("M")){
-            x = 13;
+            x = "13";
         }
         if(letra.equals("N")){
-            x = 14;
+            x = "14";
         }
         if(letra.equals("O")){
-            x = 15;
+            x = "15";
         }
         if(letra.equals("P")){
-            x = 16;
+            x = "16";
         }
         if(letra.equals("Q")){
-            x = 17;
+            x = "17";
         }
         if(letra.equals("R")){
-            x = 18;
+            x = "18";
         }
         if(letra.equals("S")){
-            x = 19;
+            x = "19";
         }
         if(letra.equals("T")){
-            x = 20;
+            x = "20";
         }
         if(letra.equals("U")){
-            x = 21;
+            x = "21";
         }
         if(letra.equals("V")){
-            x = 22;
+            x = "22";
         }
         if(letra.equals("W")){
-            x = 23;
+            x = "23";
         }
         if(letra.equals("X")){
-            x = 24;
+            x = "24";
         }
         if(letra.equals("Y")){
-            x = 25;
+            x = "25";
         }
         if(letra.equals("Z")){
-            x = 26;
+            x = "26";
         }
         if(letra.equals("!")){
-            x = 27;
+            x = "27";
         }
         if(letra.equals("?")){
-            x = 28;
+            x = "28";
         }
         if(letra.equals("¿")){
-            x = 29;
+            x = "29";
         }
         if(letra.equals("¡")){
-            x = 30;
+            x = "30";
         }
         if(letra.equals(".")){
-            x = 31;
+            x = "31";
         }
         if(letra.equals(",")){
-            x = 32;
+            x = "32";
         }
         return x;
     }

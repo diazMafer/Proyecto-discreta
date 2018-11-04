@@ -81,6 +81,54 @@ public class encriptador {
         return res;
     }
     
+    public BigInteger bloques(BigInteger n){
+        BigInteger bloques = BigInteger.valueOf(0);
+        BigInteger numsBloqs[] = new BigInteger[13];
+        String N = "25";
+        String m = "";
+        for(int i = 0; i<13; i++){
+            m+=N;
+            numsBloqs[i] = new BigInteger(m);
+            int res = n.compareTo(numsBloqs[i]);
+            if(res == 1){
+                bloques = numsBloqs[i];
+            }
+        }
+        
+        return bloques;
+    }
+    
+    public String[] separar_mensaje(String mensaje, String bloques){
+        int x = mensaje.length();
+        int bloques1 = bloques.length();
+        int division = x/bloques1;
+        int residuo = x%bloques1;
+        int tamanio = division;                     
+        if (residuo!=0){
+             tamanio = division+1;
+        } else {
+            tamanio = division;
+        }
+        
+        String[] bloques_encriptar;
+        bloques_encriptar = new String[tamanio];
+        String temp = mensaje;
+        for(int i = 0; i<tamanio; i++){
+            if(temp.length()>bloques1){
+                bloques_encriptar[i] = temp.substring(0, bloques1);
+                temp = temp.substring(bloques1);
+            } else {
+                for(int j = temp.length(); j<bloques1; j++){
+                    temp+="0";
+                }
+                bloques_encriptar[i] = temp;
+            }
+            System.out.println(bloques_encriptar[i]);
+            
+            temp = temp;
+        }
+        return bloques_encriptar; 
+    }
     /**
      * Calcula la llave publica 'e' generando un numero al azar y comprobando que 
      * su mcd(e,p-1) y mcd(e,q-1) sea igual a 1, de lo contrario seguira generando
@@ -105,6 +153,8 @@ public class encriptador {
        
         return eValue;
     }
+
+  
             
 }
             

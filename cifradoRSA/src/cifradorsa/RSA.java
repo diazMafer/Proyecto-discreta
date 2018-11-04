@@ -6,7 +6,7 @@
 package cifradorsa;
 
 import java.math.BigInteger;
-import static java.math.BigInteger.valueOf;
+
 
 
 /**
@@ -17,35 +17,41 @@ public class RSA {
  
     public RSA(){}
     
-    public BigInteger[] encriptar(BigInteger e, BigInteger n, String mensaje){
-        Byte[] temp = new Byte[1];
-        byte[] digitos = mensaje.getBytes();
-        BigInteger[] bigDigitos = new BigInteger[digitos.length];
-        int x;
-        
-        for(int i = 0; i<digitos.length; i++){
-            temp[0] = digitos[i];
-            x = temp[0];
-            bigDigitos[i] = BigInteger.valueOf(x);            
+    public BigInteger[] encriptar(String[] mensaje, BigInteger e, BigInteger n){
+        BigInteger[] encriptado = new BigInteger[mensaje.length];
+        System.out.print("BLOQUESITOS ENCRIPTADOS");
+        System.out.println();
+        for(int i = 0; i<mensaje.length; i++){
+            BigInteger bloque = new BigInteger(mensaje[i]);
+            encriptado[i] = bloque.modPow(e, n); 
+            System.out.println(encriptado[i]);
+          
         }
-        System.out.println("AQUI empiezan LOS BYTES");
-        BigInteger[] encriptado = new BigInteger[bigDigitos.length];
-        for(int j =0; j<encriptado.length; j++){
-             encriptado[j] = bigDigitos[j].modPow(e, n);  
-             System.out.println(encriptado[j]);
-        }
-       System.out.println("AQUI TERMINAN LOS BYTES");
+       
+       System.out.println("AQUI TERMINAN");
+       System.out.println();
         
-        return encriptado;
+       return encriptado;
     }
     
     
-    public BigInteger desencriptar(BigInteger n, BigInteger p, BigInteger q, BigInteger e, BigInteger cifrado){
-        BigInteger a = BigInteger.valueOf(0);
+    public void desencriptar(BigInteger n, BigInteger p, BigInteger q, BigInteger e, BigInteger[] cifrado){
+        Alfabeto abc = new Alfabeto();
+        BigInteger mod_d = p.subtract(BigInteger.valueOf(1)).multiply(q.subtract(BigInteger.valueOf(1)));
+        BigInteger d = e.modInverse(mod_d);
+        String mensaje = "";
+        System.out.println();
+        System.out.println("BLOQUES DESENCRIPTADOS");
+        for(int i = 0; i<cifrado.length; i++){
+            System.out.println(cifrado[i].modPow(d, n));
+            mensaje+=cifrado[i].modPow(d, n);
+        }
+        System.out.println("falta pasarlo a letras pero deberia de salir lo mismo que de numeros");
+        System.out.print(mensaje);
         
-        
-        
-        return a;
-        
+        //falta pasarlo a letras
     }
+
+   
+
 }
