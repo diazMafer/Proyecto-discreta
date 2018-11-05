@@ -112,62 +112,74 @@ public class Alfabeto{
         return x;
     }
     
-    public String abc(int a){
+    public String abc(String a){
         String C=null;
-        if(a==0){
+        if(a.equals("00")){
             C=" ";
-        }else if(a==1){
+        }else if(a.equals("01")){
             C="a";
-        }else if(a==2){
+        }else if(a.equals("02")){
             C="b";
-        }else if(a==3){
+        }else if(a.equals("03")){
             C="c";
-        }else if(a==4){
+        }else if(a.equals("04")){
             C="d";
-        }else if(a==5){
+        }else if(a.equals("05")){
             C="e";
-        }else if(a==6){
+        }else if(a.equals("06")){
             C="f";
-        }else if(a==7){
+        }else if(a.equals("07")){
             C="g";
-        }else if(a==8){
+        }else if(a.equals("08")){
             C="h";
-        }else if(a==9){
+        }else if(a.equals("09")){
             C="i";
-        }else if(a==10){
+        }else if(a.equals("10")){
             C="j";
-        }else if(a==11){
+        }else if(a.equals("11")){
             C="k";
-        }else if(a==12){
+        }else if(a.equals("12")){
             C="l";
-        }else if(a==13){
+        }else if(a.equals("13")){
             C="m";
-        }else if(a==14){
+        }else if(a.equals("14")){
             C="n";
-        }else if(a==15){
+        }else if(a.equals("15")){
             C="o";
-        }else if(a==16){
+        }else if(a.equals("16")){
             C="p";
-        }else if(a==17){
+        }else if(a.equals("17")){
             C="q";
-        }else if(a==18){
+        }else if(a.equals("18")){
             C="r";
-        }else if(a==19){
+        }else if(a.equals("19")){
             C="s";
-        }else if(a==20){
+        }else if(a.equals("20")){
             C="t";
-        }else if(a==21){
+        }else if(a.equals("21")){
             C="u";
-        }else if(a==22){
+        }else if(a.equals("22")){
             C="v";
-        }else if(a==23){
+        }else if(a.equals("23")){
             C="w";
-        }else if(a==24){
+        }else if(a.equals("24")){
             C="x";
-        }else if(a==25){
+        }else if(a.equals("25")){
             C="y";
-        }else if(a==26){
+        }else if(a.equals("26")){
             C="z";
+        }else if(a.equals("27")){
+            C="!";
+        }else if(a.equals("28")){
+            C="?";
+        }else if(a.equals("29")){
+            C="¿";
+        }else if(a.equals("30")){
+            C="¡";
+        }else if(a.equals("31")){
+            C=".";
+        }else if(a.equals("32")){
+            C=",";
         }
         return C;
     }

@@ -19,11 +19,12 @@ public class CifradoRSA {
      * todo en un puto main, salu2
      */
     public static void main(String[] args) {
-        encriptador instance = new encriptador();
+        encriptador instance = new encriptador(10);
         Alfabeto alfabeto = new Alfabeto();
         paresRelativos numeros;
         RSA instance2 = new RSA();
-        BigInteger p,q,e,n;
+        BigInteger p = instance.getP();
+        BigInteger q = instance.getQ();
         boolean x=true;
         char cadena;
         Scanner sc = new Scanner(System.in);
@@ -49,46 +50,28 @@ public class CifradoRSA {
                     String mensaje = "UPLOAD THE VIDEO OF MY SISTER DOING RANDOM THINGS";
                     System.out.println(mensaje);
                     System.out.println();
-                    numeros=instance.generadorRelativos();
-                    p = numeros.getNumeroUno();
-                    q = numeros.getNumeroDos();
-                    e = instance.getE(numeros);
-                    n = instance.getN(numeros);
-                    System.out.println("IMPRIMIENDO P");
-                    System.out.println(p);
-                    System.out.println("IMPRIMIENDO Q");
-                    System.out.println(q);
-                    System.out.println("IMPRIMIENDO N");
-                    System.out.println(n);
-                    System.out.println("IMPRIMIENDO E");
-                    System.out.println(e);
+                  
                     String prueba = "";
                     for(int i=0; i<mensaje.length(); i++){
                         cadena = mensaje.charAt(i);
                         prueba+= alfabeto.abc_numerico(String.valueOf(cadena));                        
                     }
-                    System.out.println("IMPRIMIENDO MENSAJE EN NUMERO");
-                    System.out.println(prueba);
-                    System.out.println("IMPRIMIENDO EL LARGO DE LA CADENA DEL MENSAJE");
-                    System.out.println(prueba.length());
-                    System.out.println("");
-                    BigInteger bloques = instance.bloques(n);
+                  
+                    BigInteger bloques = instance.bloques();
                     String tamanio = String.valueOf(bloques);
-                    System.out.println("TAMAÑO DE LOS BLOQUES");
-                    System.out.println(tamanio.length());
-                    System.out.println("");
-                    System.out.println("SEPARACION DEL MENSAJE");
+                                   
                     String[] separados = instance.separar_mensaje(prueba, tamanio);
-                    BigInteger encriptado[] = instance2.encriptar(separados, e, n);
+                    BigInteger encriptado[] = instance.encriptar(separados);
                     String nose = "";
                     for(int i=0; i<encriptado.length; i++){
                         nose+=encriptado[i];
                     }
+                    System.out.println("MENSAJE ENCRIPTADO");
                     System.out.print(nose);
                     System.out.println("");
                     System.out.print("DESENCRIPTANDO");
                     System.out.println("");
-                    instance2.desencriptar(n, p, q, e, encriptado);
+                    instance.desencriptar(encriptado, tamanio);
                     break;
                 case "2":
                     //metodo de desencriptar.
