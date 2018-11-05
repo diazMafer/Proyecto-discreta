@@ -22,7 +22,6 @@ public class CifradoRSA {
         encriptador instance = new encriptador(10);
         Alfabeto alfabeto = new Alfabeto();
         paresRelativos numeros;
-        RSA instance2 = new RSA();
         BigInteger p = instance.getP();
         BigInteger q = instance.getQ();
         boolean x=true;
