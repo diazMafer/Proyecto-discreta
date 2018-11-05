@@ -111,7 +111,7 @@ public class encriptador {
        return encriptado;
     }
     
-    public void desencriptar(BigInteger[] cifrado, String bloques){
+    public String desencriptar(BigInteger[] cifrado, String bloques){
         Alfabeto abc = new Alfabeto();
         int bloques1 = bloques.length();
         String mensaje = "";
@@ -154,8 +154,8 @@ public class encriptador {
         for(int i = 0; i<bloques_decencriptar.length; i++){
             mfinal+=abc.abc(bloques_decencriptar[i]);
         }
-        System.out.println("MENSAJE DESENCRIPTADO");
-        System.out.println(mfinal.toUpperCase());
+        
+        return mfinal;
     }
 
     public BigInteger getP() {
