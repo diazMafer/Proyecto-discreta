@@ -109,6 +109,9 @@ public class Alfabeto{
         if(letra.equals(",")){
             x = "32";
         }
+        if(letra.equals("\n")){
+            x = "33";
+        }
         return x;
     }
     
@@ -180,6 +183,8 @@ public class Alfabeto{
             C=".";
         }else if(a.equals("32")){
             C=",";
+        }else if(a.equals("33")){
+            C="\n";
         }
         return C;
     }

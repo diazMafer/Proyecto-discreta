@@ -8,8 +8,11 @@ package cifradorsa;
 import java.math.BigInteger;
 import java.util.Random;
 /**
- *
- * @author Francisco Molina
+ * Clase que modela todos los calculos necesarios para encriptar y desencriptar 
+ * con el algoritmo RSA
+ * PROYECTO DE MATEMATICA DISCRETA
+ * @author Francisco Molina y Maria Fernanda Lopez
+ * @version 5/11/2018
  */
 public class encriptador {
     
@@ -23,18 +26,23 @@ public class encriptador {
         GenerarClaves();
     }
     
-    
-   
+       
     /**
-     * Se encarga de verificar si dos numeros son dos primos relativos 
+     * Metodo para generar todos los numeros primos necesarios y claves para r
+     * realizar la encriptacion/desencriptacion
      * 
      */
     public void GenerarClaves(){
+        
+        //se generan los numeros primos 
          p = new BigInteger(tamanoPrimo, 10, new Random());
+         
+         //se calcula la variable q a partir de la variable p 
         do
             q = new BigInteger(tamanoPrimo, 10, new Random());
-        while (q.compareTo(p) == 0);
+        while (q.compareTo(p) == 0);  //lo realiza hasta que ambas variables son iguales
         
+        //se generan las claves a partir de los numeros calculados
         n = p.multiply(q);
         
         mod_d = p.subtract(BigInteger.valueOf(1));
@@ -48,6 +56,11 @@ public class encriptador {
                 
     }
     
+    
+    /**
+     * Se calcula el largo de los bloques a encriptar/desencriptar
+     * @return  largo de los bloques
+     */
     
     public BigInteger bloques(){
         BigInteger bloques = BigInteger.valueOf(0);
@@ -66,12 +79,21 @@ public class encriptador {
         return bloques;
     }
     
+    
+    /**
+     * metodo que separa el mensaje en sus respectivos bloques de n largo
+     * @param mensaje mensaje a encriptar/desencriptar
+     * @param bloques largo de los bloques
+     * @return vector con cada bloque de texto de n (bloques) de largo
+     */
     public String[] separar_mensaje(String mensaje, String bloques){
+        //declaracion de variables
         int x = mensaje.length();
         int bloques1 = bloques.length();
         int division = x/bloques1;
         int residuo = x%bloques1;
-        int tamanio = division;                     
+        int tamanio = division;  
+        
         if (residuo!=0){
              tamanio = division+1;
         } else {
@@ -86,7 +108,7 @@ public class encriptador {
                 bloques_encriptar[i] = temp.substring(0, bloques1);
                 temp = temp.substring(bloques1);
             } else {
-                for(int j = temp.length(); j<bloques1; j++){
+                for(int j = temp.length(); j<bloques1; j++){   //si no es del mismo largo se llena los espacios de diferencia con 0
                     temp+="0";
                 }
                 bloques_encriptar[i] = temp;
@@ -96,6 +118,12 @@ public class encriptador {
         }
         return bloques_encriptar; 
     }
+    
+    /**
+     * 
+     * @param mensaje array con el mensaje separado en bloques
+     * @return  vector con los bloques ya encriptados
+     */
    
     public BigInteger[] encriptar(String[] mensaje){
         BigInteger[] encriptado = new BigInteger[mensaje.length];
@@ -111,19 +139,27 @@ public class encriptador {
        return encriptado;
     }
     
+    /**
+     * Metodo que realiza el desencriptado de un mensaje de forma texto^e mod n
+     * @param cifrado  vector que contiene el texto cifrado separados en sus respectivos bloques
+     * @param bloques  largo de los numeros a decifrar
+     * @return  texto desencriptado 
+     */
     public String desencriptar(BigInteger[] cifrado, String bloques){
         Alfabeto abc = new Alfabeto();
+        //declaracion de variables
         int bloques1 = bloques.length();
         String mensaje = "";
         String rellenado = "";
-        String individual = "";
+        
+        String individual = "";  //esta variable sirve para conocer el numero resultante de la exponención que deberia de tener el mismo largo de cada bloque calculado
         for(int i = 0; i<cifrado.length; i++){
-            individual = cifrado[i].modPow(d, n).toString();
-            if(individual.length()==bloques1){
+            individual = cifrado[i].modPow(d, n).toString();  //se calcula y se guarda como un string
+            if(individual.length()==bloques1){    //si es igual al largo del bloque calculado que lo guarde en el vector de texto decencriptado
                 mensaje+=cifrado[i].modPow(d, n);
       
             } else {
-                for(int h = individual.length(); h<bloques1; h++){
+                for(int h = individual.length(); h<bloques1; h++){   //de lo contrario es porque el bloque comenzaba con n cantidad de 0 entonces que le agregue la diferencia entre bloques.le - indivual.len de ceros
                     rellenado+="0";
                 }
                 rellenado+=individual;
@@ -134,6 +170,8 @@ public class encriptador {
             
         }
         
+        //se seapara el mensaje decencriptado en números de 2 en 2 pues sus correspondientes en letras es un string de 2 caracteres que forma un número 
+        //se guarda en un vector temporal tipo string, en cada pos se encuentra una letra
         String temp = mensaje;
         String [] bloques_decencriptar = new String[(mensaje.length()/2)+1];
         for(int i = 0; i<(mensaje.length()/2)+1; i++){
@@ -150,6 +188,7 @@ public class encriptador {
             temp = temp;
         }
         
+        //Aqui comienza a pasarse el mensaje ya decencriptado en numeros a sus correspondientes en letras
         String mfinal = "";
         for(int i = 0; i<bloques_decencriptar.length; i++){
             mfinal+=abc.abc(bloques_decencriptar[i]);
@@ -157,6 +196,10 @@ public class encriptador {
         
         return mfinal;
     }
+    
+    
+    //getters
+ 
 
     public BigInteger getP() {
         return p;
