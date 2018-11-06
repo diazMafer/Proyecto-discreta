@@ -471,7 +471,7 @@ public class MainGui extends javax.swing.JFrame {
             String[] pedacitos = contenido.split(" ");
             System.out.println(pedacitos.length);
             System.out.println();
-            BigInteger[] encriptado = new BigInteger[pedacitos.length];
+            BigInteger[] encriptado = new BigInteger[pedacitos.length-1];
             System.out.println(encriptado.length);
             for(int i = 0; i<encriptado.length; i++){
                 encriptado[i] = new BigInteger(pedacitos[i].trim());
