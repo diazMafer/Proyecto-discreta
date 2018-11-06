@@ -5,16 +5,11 @@
  */
 package cifradorsa;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -303,8 +298,8 @@ public class MainGui extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         txtReader operacionesTxt = new txtReader();
-       
-        
+        String debug="";
+       JOptionPane.showMessageDialog(null, "Abra un archivo que contenga un texto sin cifrar", "Cifrado RSA ", JOptionPane.INFORMATION_MESSAGE);
         //se abre el archivo.
         try {
             contenido=operacionesTxt.readTxt(operacionesTxt.load(operacionesTxt.getChooser()));
@@ -315,55 +310,60 @@ public class MainGui extends javax.swing.JFrame {
             Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        debug="***LECTURA DE ARCHIVO***";
+        textArea1.setText(debug+"\n"+contenido+"\n"+"\n"+"***FINALIZADA LECTURA DE ARCHIVO***");
         
-        textArea1.setText(contenido);
-        Nump.setText(instance.getP().toString());
-        Numq.setText(instance.getQ().toString());
-        Numd.setText(instance.getD().toString());
-        Nume.setText(instance.getE().toString());
-        phi.setText(instance.getMod_d().toString());
-        Numn.setText(instance.getN().toString());
     
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-           String prueba = "";
-           char cadena;
-           String mensaje = contenido.toUpperCase();
-            for(int i=0; i<contenido.length(); i++){
-                cadena = mensaje.charAt(i);
-                prueba+= abc.abc_numerico(String.valueOf(cadena));                        
-            }
+        JOptionPane.showMessageDialog(null, "Asigne el nombre al archivo donde se guardara el texto cifrado \n por ejemplo: rsa.txt", "Cifrado RSA ", JOptionPane.INFORMATION_MESSAGE);
+        Nump.setText(instance.getP().toString());
+        Numq.setText(instance.getQ().toString());
+        Numd.setText(instance.getD().toString());
+        Nume.setText(instance.getE().toString());
+        phi.setText(instance.getMod_d().toString());
+        Numn.setText(instance.getN().toString());
+        String debug="***ENCRIPTANDO ARCHIVO***";
+        
+        
+        String prueba = "";
+        char cadena;
+        String mensaje = contenido.toUpperCase();
+        for(int i=0; i<contenido.length(); i++){
+            cadena = mensaje.charAt(i);
+            prueba+= abc.abc_numerico(String.valueOf(cadena));                        
+        }
 
-            BigInteger bloques = instance.bloques();
-            tamanio = String.valueOf(bloques);
+        BigInteger bloques = instance.bloques();
+        tamanio = String.valueOf(bloques);
 
-            String[] separados = instance.separar_mensaje(prueba, tamanio);
-            BigInteger encriptado[] = instance.encriptar(separados);
-            String nose = "";
-            for(int i=0; i<encriptado.length; i++){
-                nose+=encriptado[i];
-            }
-            txtReader operacionesTxt = new txtReader();
-            try {
-            
+        String[] separados = instance.separar_mensaje(prueba, tamanio);
+        BigInteger encriptado[] = instance.encriptar(separados);
+        String nose = "";
+        for(int i=0; i<encriptado.length; i++){
+            nose+=encriptado[i];
+        }
+        txtReader operacionesTxt = new txtReader();
+        try {    
             operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), nose);
-            
         } catch (IOException ex) {
             Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
         }
-            textArea1.setText(nose);
+            textArea1.setText(debug+"\n"+nose+"\n"+"\n"+"***FINALIZADA ENCRIPTACION DE ARCHIVO***");
             txtEncriptado = new BigInteger[encriptado.length];
             txtEncriptado = encriptado;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Asigne el nombre al archivo donde se guardara el texto descifrado \n por ejemplo: archivo.txt", "Cifrado RSA ", JOptionPane.INFORMATION_MESSAGE);
         txtReader operacionesTxt = new txtReader();
         String txtDece = instance.desencriptar(txtEncriptado, tamanio);
-        textArea1.setText("");
+        String debug="***DESCIFRANDO ARCHIVO ENCRIPTADO POR RSA***";
+        textArea1.setText(debug+"\n"+txtDece+"\n"+"\n"+"***FINALIZADA DESENCRIPTACION DE ARCHIVO***");
         
         try {
             
