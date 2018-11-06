@@ -346,7 +346,14 @@ public class MainGui extends javax.swing.JFrame {
             for(int i=0; i<encriptado.length; i++){
                 nose+=encriptado[i];
             }
+            txtReader operacionesTxt = new txtReader();
+            try {
             
+            operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), nose);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
             textArea1.setText(nose);
             txtEncriptado = new BigInteger[encriptado.length];
             txtEncriptado = encriptado;
