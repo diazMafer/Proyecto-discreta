@@ -52,55 +52,33 @@ public class encriptador {
             e = new BigInteger(2*tamanoPrimo, new Random());
         }
         while (e.compareTo(mod_d) != 1 || e.gcd(mod_d).compareTo(BigInteger.valueOf(1)) != 0);
-            d = e.modInverse(mod_d);         
+            d = e.modInverse(mod_d);
+                
     }
-    public BigInteger ObtenerD_dado(Integer pPara, Integer qPara, Integer eValue){
-       //Variables a utilizar:::
-       BigInteger mod_Big_D,bigD;
-       //convertimos a bigInteger los valores dados.
-       BigInteger bigP = BigInteger.valueOf(pPara);
-       BigInteger bigQ = BigInteger.valueOf(qPara);
-       BigInteger bigE = BigInteger.valueOf(eValue);
-       mod_Big_D = bigP.subtract(BigInteger.valueOf(1));
-       mod_Big_D = mod_Big_D.multiply(bigQ.subtract(BigInteger.valueOf(1)));
-        
-       while (bigE.compareTo(mod_Big_D) != 1 || bigE.gcd(mod_Big_D).compareTo(BigInteger.valueOf(1)) != 0);
-            bigD = bigE.modInverse(mod_Big_D);
-            
-      return bigD;
-    }
-    public BigInteger ObtenerN_dado(Integer pPara, Integer qPara){
-       BigInteger bigN;
-       BigInteger bigP = BigInteger.valueOf(pPara);
-       BigInteger bigQ = BigInteger.valueOf(qPara);
-       bigN = bigP.multiply(bigQ);
-        System.out.println(bigN);
-       return bigN;
-    }
-        
     
     
     /**
      * Se calcula el largo de los bloques a encriptar/desencriptar
      * @return  largo de los bloques
      */
-    public BigInteger bloques(BigInteger N_Value){
-         BigInteger bloques = BigInteger.valueOf(0);
+    
+    public BigInteger bloques(BigInteger Numn){
+        BigInteger bloques = BigInteger.valueOf(0);
         BigInteger numsBloqs[] = new BigInteger[13];
         String N = "25";
         String m = "";
         for(int i = 0; i<13; i++){
             m+=N;
             numsBloqs[i] = new BigInteger(m);
-            int res = N_Value.compareTo(numsBloqs[i]);
+            int res = Numn.compareTo(numsBloqs[i]);
             if(res == 1){
                 bloques = numsBloqs[i];
             }
         }
         
         return bloques;
-        
     }
+    
     
     /**
      * metodo que separa el mensaje en sus respectivos bloques de n largo
@@ -110,7 +88,7 @@ public class encriptador {
      */
     public String[] separar_mensaje(String mensaje, String bloques){
         //declaracion de variables
-        int x = mensaje.length();   
+        int x = mensaje.length();
         int bloques1 = bloques.length();
         int division = x/bloques1;
         int residuo = x%bloques1;
@@ -141,17 +119,21 @@ public class encriptador {
         return bloques_encriptar; 
     }
     
-        public BigInteger[] encriptar(String[] mensaje, BigInteger E_value, BigInteger N_value){
+    /**
+     * 
+     * @param mensaje array con el mensaje separado en bloques
+     * @return  vector con los bloques ya encriptados
+     */
+   
+    public BigInteger[] encriptar(String[] mensaje){
         BigInteger[] encriptado = new BigInteger[mensaje.length];
   
         for(int i = 0; i<mensaje.length; i++){
             BigInteger bloque = new BigInteger(mensaje[i]);
-            encriptado[i] = bloque.modPow(E_value, N_value); 
+            encriptado[i] = bloque.modPow(e, n); 
             
-          
         }
-       
-          
+                 
        return encriptado;
     }
     
@@ -161,7 +143,7 @@ public class encriptador {
      * @param bloques  largo de los numeros a decifrar
      * @return  texto desencriptado 
      */
-    public String desencriptar(BigInteger[] cifrado, String bloques, BigInteger D_Value, BigInteger N_Value){
+    public String desencriptar(BigInteger[] cifrado, String bloques){
         Alfabeto abc = new Alfabeto();
         //declaracion de variables
         int bloques1 = bloques.length();
@@ -170,9 +152,9 @@ public class encriptador {
         
         String individual = "";  //esta variable sirve para conocer el numero resultante de la exponención que deberia de tener el mismo largo de cada bloque calculado
         for(int i = 0; i<cifrado.length; i++){
-            individual = cifrado[i].modPow(D_Value, N_Value).toString();  //se calcula y se guarda como un string
+            individual = cifrado[i].modPow(d, n).toString();  //se calcula y se guarda como un string
             if(individual.length()==bloques1){    //si es igual al largo del bloque calculado que lo guarde en el vector de texto decencriptado
-                mensaje+=cifrado[i].modPow(D_Value, N_Value);
+                mensaje+=cifrado[i].modPow(d, n);
       
             } else {
                 for(int h = individual.length(); h<bloques1; h++){   //de lo contrario es porque el bloque comenzaba con n cantidad de 0 entonces que le agregue la diferencia entre bloques.le - indivual.len de ceros
@@ -226,6 +208,7 @@ public class encriptador {
         int bloques1 = x.length();
         
         System.out.println(bloques1);
+        
         String individual = "";  //esta variable sirve para conocer el numero resultante de la exponención que deberia de tener el mismo largo de cada bloque calculado
         for(int i = 0; i<encriptado.length; i++){
             individual = encriptado[i].modPow(numd, numn).toString();  //se calcula y se guarda como un string
@@ -275,7 +258,6 @@ public class encriptador {
        
         
     }
-    
     //getters
  
 
