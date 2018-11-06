@@ -110,7 +110,7 @@ public class encriptador {
      */
     public String[] separar_mensaje(String mensaje, String bloques){
         //declaracion de variables
-        int x = mensaje.length();
+        int x = mensaje.length();   
         int bloques1 = bloques.length();
         int division = x/bloques1;
         int residuo = x%bloques1;

@@ -318,16 +318,16 @@ public class MainGui extends javax.swing.JFrame {
         label10.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         label10.setText("Número q : ");
 
-        numPAjeno.setEditable(false);
+        numPAjeno.setEnabled(false);
         numPAjeno.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        numQAjeno.setEditable(false);
+        numQAjeno.setEnabled(false);
         numQAjeno.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         label11.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         label11.setText("Número e : ");
 
-        numEAjeno.setEditable(false);
+        numEAjeno.setEnabled(false);
         numEAjeno.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -394,7 +394,7 @@ public class MainGui extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         txtReader operacionesTxt = new txtReader();
         String debug="";
-       JOptionPane.showMessageDialog(null, "Abra un archivo que contenga un texto sin cifrar", "Cifrado RSA ", JOptionPane.INFORMATION_MESSAGE);
+       JOptionPane.showMessageDialog(null, "Abra un archivo que contenga un texto", "Cifrado RSA ", JOptionPane.INFORMATION_MESSAGE);
         //se abre el archivo.
         try {
             contenido=operacionesTxt.readTxt(operacionesTxt.load(operacionesTxt.getChooser()));
@@ -442,7 +442,7 @@ public class MainGui extends javax.swing.JFrame {
             BigInteger encriptado[] = instance.encriptar(separados, instance.getE(), instance.getN());
             
             for(int i=0; i<encriptado.length; i++){
-                nose+=encriptado[i];
+                nose+=encriptado[i]+" ";
             }
             try {    
                 operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), nose);
@@ -466,6 +466,8 @@ public class MainGui extends javax.swing.JFrame {
         if(ajeno){
             BigInteger d_value = instance.ObtenerD_dado(Integer.valueOf(numPAjeno.getText()), Integer.valueOf(numQAjeno.getText()), Integer.valueOf(numEAjeno.getText()));
             BigInteger value_n = instance.ObtenerN_dado(Integer.valueOf(numPAjeno.getText()), Integer.valueOf(numQAjeno.getText()));
+            BigInteger bloques = instance.bloques(value_n);
+            tamanio = String.valueOf(bloques);
             String txtDece = instance.desencriptar(txtEncriptado, tamanio, d_value, value_n );
         String debug="***DESCIFRANDO ARCHIVO ENCRIPTADO POR RSA***";
         textArea1.setText(debug+"\n"+txtDece+"\n"+"\n"+"***FINALIZADA DESENCRIPTACION DE ARCHIVO***");
@@ -504,9 +506,9 @@ public class MainGui extends javax.swing.JFrame {
 
     private void radioAjenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAjenoActionPerformed
         ajeno=true;
-        numPAjeno.enableInputMethods(true);
-        numQAjeno.enableInputMethods(true);
-        numEAjeno.enableInputMethods(true);
+        numPAjeno.setEnabled(true);
+        numQAjeno.setEnabled(true);
+        numEAjeno.setEnabled(true);
         jButton3.setEnabled(true);
         
     }//GEN-LAST:event_radioAjenoActionPerformed
