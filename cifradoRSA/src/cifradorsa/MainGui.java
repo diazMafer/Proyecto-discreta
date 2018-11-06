@@ -27,6 +27,7 @@ public class MainGui extends javax.swing.JFrame {
     private String contenido;
     private BigInteger[] txtEncriptado;
     private String tamanio;
+    private boolean ajeno=false;
     public MainGui() {
         initComponents();
         abc = new Alfabeto();
@@ -44,6 +45,7 @@ public class MainGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         label1 = new java.awt.Label();
@@ -68,6 +70,15 @@ public class MainGui extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        radioPropio = new javax.swing.JRadioButton();
+        radioAjeno = new javax.swing.JRadioButton();
+        jPanel3 = new javax.swing.JPanel();
+        label9 = new java.awt.Label();
+        label10 = new java.awt.Label();
+        numPAjeno = new java.awt.TextField();
+        numQAjeno = new java.awt.TextField();
+        label11 = new java.awt.Label();
+        numEAjeno = new java.awt.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -236,9 +247,26 @@ public class MainGui extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 102, 102));
         jButton3.setText("Desencriptar");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(radioPropio);
+        radioPropio.setText("Desencriptación propia");
+        radioPropio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioPropioActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(radioAjeno);
+        radioAjeno.setText("Desencriptación ajena");
+        radioAjeno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioAjenoActionPerformed(evt);
             }
         });
 
@@ -251,14 +279,12 @@ public class MainGui extends javax.swing.JFrame {
                 .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(radioPropio)
+                    .addComponent(radioAjeno)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,17 +292,86 @@ public class MainGui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 71, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(radioPropio)
+                        .addGap(18, 18, 18)
+                        .addComponent(radioAjeno)
+                        .addGap(0, 18, Short.MAX_VALUE))
                     .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, -1, 350));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, -1, 380));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Desencriptación Ajena", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 16), new java.awt.Color(255, 102, 102))); // NOI18N
+
+        label9.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        label9.setText("Número p : ");
+
+        label10.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        label10.setText("Número q : ");
+
+        numPAjeno.setEditable(false);
+        numPAjeno.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        numQAjeno.setEditable(false);
+        numQAjeno.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        label11.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        label11.setText("Número e : ");
+
+        numEAjeno.setEditable(false);
+        numEAjeno.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(numEAjeno, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(52, 52, 52)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(numPAjeno, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numQAjeno, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(numPAjeno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(numQAjeno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(numEAjeno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        label11.getAccessibleContext().setAccessibleName("Número e:");
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 590, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -336,45 +431,85 @@ public class MainGui extends javax.swing.JFrame {
             cadena = mensaje.charAt(i);
             prueba+= abc.abc_numerico(String.valueOf(cadena));                        
         }
-
-        BigInteger bloques = instance.bloques();
-        tamanio = String.valueOf(bloques);
-
-        String[] separados = instance.separar_mensaje(prueba, tamanio);
-        BigInteger encriptado[] = instance.encriptar(separados);
+       
+        
         String nose = "";
-        for(int i=0; i<encriptado.length; i++){
-            nose+=encriptado[i];
-        }
         txtReader operacionesTxt = new txtReader();
-        try {    
-            operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), nose);
-        } catch (IOException ex) {
-            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         //si se esta ingresando valores p y q...          
+            BigInteger bloques = instance.bloques(instance.getN());
+            tamanio = String.valueOf(bloques);
+            String[] separados = instance.separar_mensaje(prueba, tamanio);
+            BigInteger encriptado[] = instance.encriptar(separados, instance.getE(), instance.getN());
+            
+            for(int i=0; i<encriptado.length; i++){
+                nose+=encriptado[i];
+            }
+            try {    
+                operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), nose);
+            }
+            catch (IOException ex) {
+                Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
             textArea1.setText(debug+"\n"+nose+"\n"+"\n"+"***FINALIZADA ENCRIPTACION DE ARCHIVO***");
             txtEncriptado = new BigInteger[encriptado.length];
             txtEncriptado = encriptado;
+        
+        
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Asigne el nombre al archivo donde se guardara el texto descifrado \n por ejemplo: archivo.txt", "Cifrado RSA ", JOptionPane.INFORMATION_MESSAGE);
         txtReader operacionesTxt = new txtReader();
-        String txtDece = instance.desencriptar(txtEncriptado, tamanio);
+        if(ajeno){
+            BigInteger d_value = instance.ObtenerD_dado(Integer.valueOf(numPAjeno.getText()), Integer.valueOf(numQAjeno.getText()), Integer.valueOf(numEAjeno.getText()));
+            BigInteger value_n = instance.ObtenerN_dado(Integer.valueOf(numPAjeno.getText()), Integer.valueOf(numQAjeno.getText()));
+            String txtDece = instance.desencriptar(txtEncriptado, tamanio, d_value, value_n );
         String debug="***DESCIFRANDO ARCHIVO ENCRIPTADO POR RSA***";
         textArea1.setText(debug+"\n"+txtDece+"\n"+"\n"+"***FINALIZADA DESENCRIPTACION DE ARCHIVO***");
         
-        try {
+            try {   
+                operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), txtDece);
             
-            operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), txtDece);
+            } catch (IOException ex) {
+                Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
-        } catch (IOException ex) {
-            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } else{
+             String txtDece = instance.desencriptar(txtEncriptado, tamanio, instance.getD(), instance.getN() );
+             String debug="***DESCIFRANDO ARCHIVO ENCRIPTADO POR RSA***";
+             textArea1.setText(debug+"\n"+txtDece+"\n"+"\n"+"***FINALIZADA DESENCRIPTACION DE ARCHIVO***");
         
-       
+             try {   
+                operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), txtDece);
+            
+            } catch (IOException ex) {
+                Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        }  
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void radioPropioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPropioActionPerformed
+        ajeno=false;
+        numPAjeno.setText("");
+        numQAjeno.setText("");
+        numEAjeno.setText("");
+        jButton3.setEnabled(true);
+              
+    }//GEN-LAST:event_radioPropioActionPerformed
+
+    private void radioAjenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioAjenoActionPerformed
+        ajeno=true;
+        numPAjeno.enableInputMethods(true);
+        numQAjeno.enableInputMethods(true);
+        numEAjeno.enableInputMethods(true);
+        jButton3.setEnabled(true);
+        
+    }//GEN-LAST:event_radioAjenoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,16 +552,20 @@ public class MainGui extends javax.swing.JFrame {
     private java.awt.TextField Numn;
     private java.awt.TextField Nump;
     private java.awt.TextField Numq;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator2;
     private java.awt.Label label1;
+    private java.awt.Label label10;
+    private java.awt.Label label11;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
@@ -434,7 +573,13 @@ public class MainGui extends javax.swing.JFrame {
     private java.awt.Label label6;
     private java.awt.Label label7;
     private java.awt.Label label8;
+    private java.awt.Label label9;
+    private java.awt.TextField numEAjeno;
+    private java.awt.TextField numPAjeno;
+    private java.awt.TextField numQAjeno;
     private java.awt.TextField phi;
+    private javax.swing.JRadioButton radioAjeno;
+    private javax.swing.JRadioButton radioPropio;
     private java.awt.TextArea textArea1;
     // End of variables declaration//GEN-END:variables
 }
