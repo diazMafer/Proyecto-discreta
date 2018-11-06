@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Mafer/Documents/GitHub/Proyecto-discreta/cifradoRSA/src/cifradorsa/Alfabeto.java</file>
-            <file>file:/C:/Users/Mafer/Documents/GitHub/Proyecto-discreta/cifradoRSA/src/cifradorsa/MainGui.java</file>
-            <file>file:/C:/Users/Mafer/Documents/GitHub/Proyecto-discreta/cifradoRSA/src/cifradorsa/encriptador.java</file>
-            <file>file:/C:/Users/Mafer/Documents/GitHub/Proyecto-discreta/cifradoRSA/src/cifradorsa/CifradoRSA.java</file>
+            <file>file:/C:/Users/molin/Desktop/UVG/Year%202/Semestre%202/Mate%20discreta/pruebaPropiaCifrado/cifradoRSA/src/cifradorsa/paresRelativos.java</file>
+            <file>file:/C:/Users/molin/Desktop/UVG/Year%202/Semestre%202/Mate%20discreta/pruebaPropiaCifrado/cifradoRSA/src/cifradorsa/encriptador.java</file>
+            <file>file:/C:/Users/molin/Desktop/UVG/Year%202/Semestre%202/Mate%20discreta/pruebaPropiaCifrado/cifradoRSA/src/cifradorsa/RSA.java</file>
+            <file>file:/C:/Users/molin/Desktop/UVG/Year%202/Semestre%202/Mate%20discreta/pruebaPropiaCifrado/cifradoRSA/src/cifradorsa/CifradoRSA.java</file>
+            <file>file:/C:/Users/molin/Desktop/UVG/Year%202/Semestre%202/Mate%20discreta/pruebaPropiaCifrado/cifradoRSA/src/cifradorsa/Alfabeto.java</file>
+            <file>file:/C:/Users/molin/Desktop/UVG/Year%202/Semestre%202/Mate%20discreta/pruebaPropiaCifrado/cifradoRSA/src/cifradorsa/MainGui.java</file>
+            <file>file:/C:/Users/molin/Desktop/UVG/Year%202/Semestre%202/Mate%20discreta/pruebaPropiaCifrado/cifradoRSA/src/cifradorsa/txtReader.java</file>
         </group>
     </open-files>
 </project-private>

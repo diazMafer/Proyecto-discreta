@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -86,23 +87,23 @@ public class MainGui extends javax.swing.JFrame {
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         label1.setText("RSA");
-        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 224, 167, 76));
+        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 120, 50));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 24, 13, 520));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 24, 0, 520));
 
         label2.setAlignment(java.awt.Label.CENTER);
         label2.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         label2.setText("CIFRADO");
-        jPanel1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 114));
+        jPanel1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 160, 80));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Parámetros RSA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 16), new java.awt.Color(255, 102, 102))); // NOI18N
 
-        label3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         label3.setText("Número p : ");
 
-        label4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         label4.setText("Número q : ");
 
         Nump.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -131,7 +132,7 @@ public class MainGui extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Nump, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Numq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -141,15 +142,15 @@ public class MainGui extends javax.swing.JFrame {
         Nump.getAccessibleContext().setAccessibleName("Nump");
         Numq.getAccessibleContext().setAccessibleName("Numq");
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 38, 697, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 590, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Claves RSA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 16), new java.awt.Color(255, 102, 102))); // NOI18N
 
-        label5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label5.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         label5.setText("Clave pública");
 
-        label6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label6.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         label6.setText("Clave privada");
 
         Nume.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -160,10 +161,10 @@ public class MainGui extends javax.swing.JFrame {
 
         Numn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        label7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         label7.setText("Módulo n:");
 
-        label8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label8.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         label8.setText("Módulo phi:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -189,7 +190,7 @@ public class MainGui extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Nume, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Numd, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,15 +199,15 @@ public class MainGui extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Nume, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Numd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Numn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(phi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,7 +216,7 @@ public class MainGui extends javax.swing.JFrame {
 
         label6.getAccessibleContext().setAccessibleName("Número d:");
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 208, -1, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 590, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escoger archivo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 16), new java.awt.Color(255, 102, 102))); // NOI18N
@@ -239,7 +240,7 @@ public class MainGui extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(255, 102, 102));
-        jButton3.setText("Decencriptar");
+        jButton3.setText("Desencriptar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -268,85 +269,61 @@ public class MainGui extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 71, Short.MAX_VALUE))
+                    .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(927, 38, -1, 439));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, -1, 350));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1807, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1876, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-        // muestra el cuadro de diálogo de archivos, para que el usuario pueda elegir el archivo a abrir
-        JFileChooser selectorArchivos = new JFileChooser();
-        selectorArchivos.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
-        // indica cual fue la accion de usuario sobre el jfilechooser
-        int resultado = selectorArchivos.showOpenDialog(this);
-
-        File archivo = selectorArchivos.getSelectedFile(); // obtiene el archivo seleccionado
-
-        // muestra error si es inválido
-        if ((archivo == null) || (archivo.getName().equals(""))) {
-            JOptionPane.showMessageDialog(this, "Nombre de archivo inválido", "Nombre de archivo inválido", JOptionPane.ERROR_MESSAGE);
-        } else {
-            String path  = archivo.getAbsolutePath();
-            FileReader fr = null;
-            BufferedReader br = null;
-            //Cadena de texto donde se guardara el contenido del archivo
-           
-            try
-            {
-                //ruta puede ser de tipo String o tipo File
-                fr = new FileReader( path );
-                br = new BufferedReader( fr );
-
-                String linea;
-                //Obtenemos el contenido del archivo linea por linea
-                while( ( linea = br.readLine() ) != null ){ 
-                    contenido += linea + "\n";
-                }
-
-            }catch( Exception e ){  }
-            //finally se utiliza para que si todo ocurre correctamente o si ocurre 
-            //algun error se cierre el archivo que anteriormente abrimos
-            finally
-            {
-                try{
-                    br.close();
-                }catch( Exception ex ){}
-            }
-            
-            textArea1.setText(contenido);
-            Nump.setText(instance.getP().toString());
-            Numq.setText(instance.getQ().toString());
-            Numd.setText(instance.getD().toString());
-            Nume.setText(instance.getE().toString());
-            phi.setText(instance.getMod_d().toString());
-            Numn.setText(instance.getN().toString());
+        txtReader operacionesTxt = new txtReader();
+       
+        
+        //se abre el archivo.
+        try {
+            contenido=operacionesTxt.readTxt(operacionesTxt.load(operacionesTxt.getChooser()));
+            System.out.println(contenido);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        textArea1.setText(contenido);
+        Nump.setText(instance.getP().toString());
+        Numq.setText(instance.getQ().toString());
+        Numd.setText(instance.getD().toString());
+        Nume.setText(instance.getE().toString());
+        phi.setText(instance.getMod_d().toString());
+        Numn.setText(instance.getN().toString());
+    
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -377,9 +354,19 @@ public class MainGui extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+        txtReader operacionesTxt = new txtReader();
         String txtDece = instance.desencriptar(txtEncriptado, tamanio);
-        textArea1.setText(txtDece.toUpperCase());
+        textArea1.setText("");
+        
+        try {
+            
+            operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), txtDece);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(MainGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
