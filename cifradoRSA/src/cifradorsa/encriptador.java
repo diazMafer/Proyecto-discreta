@@ -213,6 +213,68 @@ public class encriptador {
         return mfinal;
     }
     
+    public String prueba_d(BigInteger nump, BigInteger numq, BigInteger nume, BigInteger[] encriptado){
+       
+        Alfabeto abc = new Alfabeto();
+        BigInteger numn = nump.multiply(numq);
+        BigInteger modphi = nump.subtract(BigInteger.valueOf(1));
+        modphi = modphi.multiply(numq.subtract(BigInteger.valueOf(1)));
+        BigInteger numd = nume.modInverse(modphi);
+        String mensaje = "";
+        String rellenado = "";
+        String x = bloques(numn).toString();
+        int bloques1 = x.length();
+        
+        System.out.println(bloques1);
+        String individual = "";  //esta variable sirve para conocer el numero resultante de la exponención que deberia de tener el mismo largo de cada bloque calculado
+        for(int i = 0; i<encriptado.length; i++){
+            individual = encriptado[i].modPow(numd, numn).toString();  //se calcula y se guarda como un string
+            System.out.println(individual);
+            if(individual.length()==bloques1){    //si es igual al largo del bloque calculado que lo guarde en el vector de texto decencriptado
+                mensaje+=encriptado[i].modPow(numd, numn);
+      
+            } else {
+                for(int h = individual.length(); h<bloques1; h++){   //de lo contrario es porque el bloque comenzaba con n cantidad de 0 entonces que le agregue la diferencia entre bloques.le - indivual.len de ceros
+                    rellenado+="0";
+                }
+                rellenado+=individual;
+            
+                mensaje+=rellenado;
+                rellenado = "";
+            }
+            
+        }
+        
+        System.out.println(mensaje);
+        //se seapara el mensaje decencriptado en números de 2 en 2 pues sus correspondientes en letras es un string de 2 caracteres que forma un número 
+        //se guarda en un vector temporal tipo string, en cada pos se encuentra una letra
+        String temp = mensaje;
+        String [] bloques_decencriptar = new String[(mensaje.length()/2)+1];
+        for(int i = 0; i<(mensaje.length()/2)+1; i++){
+            if(temp.length()>2){
+                bloques_decencriptar[i] = temp.substring(0, 2);
+                temp = temp.substring(2);
+            } else {
+                for(int j = temp.length(); j<2; j++){
+                    temp+="0";
+                }
+                bloques_decencriptar[i] = temp;
+            }
+                        
+            temp = temp;
+        }
+        
+        //Aqui comienza a pasarse el mensaje ya decencriptado en numeros a sus correspondientes en letras
+        String mfinal = "";
+        for(int i = 0; i<bloques_decencriptar.length; i++){
+            System.out.println(bloques_decencriptar[i]);
+            mfinal+=abc.abc(bloques_decencriptar[i]);
+        }
+        
+        return mfinal;
+       
+        
+    }
     
     //getters
  

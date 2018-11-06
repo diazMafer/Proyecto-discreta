@@ -468,9 +468,18 @@ public class MainGui extends javax.swing.JFrame {
             BigInteger value_n = instance.ObtenerN_dado(Integer.valueOf(numPAjeno.getText()), Integer.valueOf(numQAjeno.getText()));
             BigInteger bloques = instance.bloques(value_n);
             tamanio = String.valueOf(bloques);
-            String txtDece = instance.desencriptar(txtEncriptado, tamanio, d_value, value_n );
-        String debug="***DESCIFRANDO ARCHIVO ENCRIPTADO POR RSA***";
-        textArea1.setText(debug+"\n"+txtDece+"\n"+"\n"+"***FINALIZADA DESENCRIPTACION DE ARCHIVO***");
+            String[] pedacitos = contenido.split(" ");
+            System.out.println(pedacitos.length);
+            System.out.println();
+            BigInteger[] encriptado = new BigInteger[pedacitos.length];
+            System.out.println(encriptado.length);
+            for(int i = 0; i<encriptado.length; i++){
+                encriptado[i] = new BigInteger(pedacitos[i].trim());
+                System.out.println(encriptado[i]);
+            }
+            String txtDece = instance.desencriptar(encriptado, tamanio, d_value, value_n );
+            String debug="***DESCIFRANDO ARCHIVO ENCRIPTADO POR RSA***";
+            textArea1.setText(debug+"\n"+txtDece+"\n"+"\n"+"***FINALIZADA DESENCRIPTACION DE ARCHIVO***");
         
             try {   
                 operacionesTxt.writeAndCreate(operacionesTxt.loadWriter(operacionesTxt.getChooser()), txtDece);
